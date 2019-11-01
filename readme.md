@@ -1,6 +1,12 @@
 # react-native-token
 Library for managing tokens structured with keychain storage
 
+## Feature
+* Simple and easy to use 
+* Topic-Token Top-down structure
+* Token validation
+* Token stored in Keychain storage
+
 ## Usage
 ```javascript
 //import library
@@ -21,7 +27,8 @@ const validateSessionToken = async (token) => {
 
 const example = async () => {
     // Initialize Storage
-    // Initialize function is not required. But you can use it for your own storage title. default is RNToken
+    // Initialize function is not required. 
+    // You can use it for your own storage title. default is 'RNToken'
     await RNToken.initialization("RNToken")
 
     // create Topic
@@ -46,5 +53,7 @@ const example = async () => {
     // validate token if it has validate function
     await RNToken.validateToken("test", "sessionToken")
 }
+
+
 ```
 
