@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/W1nU/react-native-token/issues"
   },
-  "homepage": "https://github.com/W1nU/react-native-token#readme"
+  "homepage": "https://github.com/W1nU/react-native-token#readme",
+  "dependencies": {
+    "react-native-keychainstorage": "^1.0.1"
+  }
 }
