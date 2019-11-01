@@ -1,0 +1,27 @@
+{
+  "name": "react-native-token",
+  "version": "1.0.0",
+  "description": "Library for managing tokens structured with keychain storage",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/W1nU/react-native-token.git"
+  },
+  "keywords": [
+    "react-native-token",
+    "react-native-keychain",
+    "token",
+    "storage",
+    "react-native",
+    "keychain"
+  ],
+  "author": "W1nU",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/W1nU/react-native-token/issues"
+  },
+  "homepage": "https://github.com/W1nU/react-native-token#readme"
+}
