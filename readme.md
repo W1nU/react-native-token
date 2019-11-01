@@ -20,6 +20,10 @@ const validateSessionToken = async (token) => {
 }
 
 const example = async () => {
+    // Initialize Storage
+    // Initialize function is not required. But you can use it for your own storage title. default is RNToken
+    await RNToken.initialization("RNToken")
+
     // create Topic
     // A topic is the concept of a top-level depository of token or set of tokens.
     await RNToken.addTopic("test")

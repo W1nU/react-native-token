@@ -3,6 +3,12 @@ import KeychainStorage from "react-native-keychainstorage"
 const KEYCHAIN_ROOT_KEY = "RNToken"
 
 const RNToken = {
+    initialization: async (storageTitle) => {
+        KEYCHAIN_ROOT_KEY = storageTitle
+
+        await RNToken._checkInitializedStorage()
+    },
+
     addTopic: async (topicTitle) => {
         await RNToken._checkInitializedStorage()
 
