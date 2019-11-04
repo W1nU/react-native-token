@@ -2,23 +2,23 @@
 Library for managing tokens structured with keychain storage
 
 ## Feature
-* Simple and easy to use 
+* Simple and easy to use(hook style)
 * Topic-Token Top-down structure
-* Token validation
 * Token stored in Keychain storage
 
 ## Usage
 ```javascript
 //import library
-import RNToken from "react-native-token"
+import { useTopic } from "react-native-token"
 
 // this is not required
 import API from "aws-amplify"
 
+// IMPORTANT : EXAMPLE FUNCTION
 const validateSessionToken = async (token) => {
     const result = await API.get("rntoken", "/token", {
         body: "validate",
-        type: "sessionToken"
+        type: "publicKey"
         token: token
     })
 
@@ -26,34 +26,116 @@ const validateSessionToken = async (token) => {
 }
 
 const example = async () => {
-    // Initialize Storage
-    // Initialize function is not required. 
-    // You can use it for your own storage title. default is 'RNToken'
-    await RNToken.initialization("RNToken")
+    // Create a topic for storing Keys, Tokens ... etc.
+    let topic = await useTopic("rsa")
 
-    // create Topic
-    // A topic is the concept of a top-level depository of token or set of tokens.
-    await RNToken.addTopic("test")
+    // Set a value
+    await topic.setToken("publicKey", publicKey)
 
-    // addToken in created topic
-    await RNToken.addToken("test", "refreshToken", "]s+lIM~Hti~4ZYNJntNrudQ0$-#<=")
-
-    // addToken in created topic with validate function
-    await RNToken.addToken("test", "sessionToken". "asdfafjl12kjdladsfadf", validateSessionToken)
-
-    // update exist token
-    await RNToken.updateToken("test", "refreshToken", "adfafasdlkhf;adfa;ldshfj;alf")
-
-    // get refreshToken in 'test' topic
-    await RNToken.getToken("test", "refreshToken")
-
-    // get All token in 'test' topic
-    await RNToken.getAllToken("test")
-
-    // validate token if it has validate function
-    await RNToken.validateToken("test", "sessionToken")
+    // Get all tokens that stored in Topic
+    tokens = await topic.getAllToken()
+    
+    let publicToken = tokens.publicKey.tokenValue
 }
+```
 
+## API
+### functions
+#### useTopic(topicTitle(String, required)) => RNToken objcet
+* Create A topic for storing values.
+* It only create a new topic when topic does not exist.
+* If already had a topic for 'topicTitle' that you passed, will just return RNToken object
 
+##### usage 
+```javascript
+import { useTopic } from "react-native-token"
+
+const example = async () => {
+    let topic = await useTopic("rsa")
+}
+```
+
+#### RNToken.setToken(tokenTitle(String, required), tokenValue(String, required), validateFunction(Function, optional))
+* Add or Update token in topic
+
+##### usage 
+```javascript
+import { useTopic } from "react-native-token"
+
+const example = async () => {
+    let topic = await useTopic("rsa")
+
+    await topic.setToken("test", "testValue", testFunction)
+}
+```
+
+#### RNToken.getToken(tokenTitle(String, required))
+* Get token 
+
+##### usage 
+```javascript
+import { useTopic } from "react-native-token"
+
+const example = async () => {
+    let topic = await useTopic("rsa")
+
+    await topic.getToken("test")
+}
+```
+
+#### RNToken.deleteToken(tokenTitle(String, required))
+* Delete token
+
+##### usage 
+```javascript
+import { useTopic } from "react-native-token"
+
+const example = async () => {
+    let topic = await useTopic("rsa")
+
+    await topic.deleteToken("test")
+}
+```
+
+#### RNToken.getAllToken()
+* Get all token in topic
+
+##### usage 
+```javascript
+import { useTopic } from "react-native-token"
+
+const example = async () => {
+    let topic = await useTopic("rsa")
+
+    await topic.getAllToken()
+}
+```
+
+#### RNToken.deleteTopic()
+* Delete this topic
+
+##### usage 
+```javascript
+import { useTopic } from "react-native-token"
+
+const example = async () => {
+    let topic = await useTopic("rsa")
+
+    await topic.deleteTopic()
+}
+```
+
+#### RNToken.validateToken(tokenTitle)
+* Run validate function and return result 
+
+##### usage 
+```javascript
+import { useTopic } from "react-native-token"
+
+const example = async () => {
+    let topic = await useTopic("rsa")
+
+    await topic.validateToken("test")
+}
 ```
 
