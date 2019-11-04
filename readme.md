@@ -126,7 +126,7 @@ const example = async () => {
 }
 ```
 
-#### RNToken.validateToken(tokenTitle)
+#### RNToken.validateToken(tokenTitle(String, required))
 * Run validate function and return result 
 
 ##### usage 
