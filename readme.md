@@ -5,6 +5,7 @@ Library for managing tokens structured with keychain storage
 * Simple and easy to use(hook style)
 * Topic-Token Top-down structure
 * Token stored in Keychain storage
+* MIT License
 
 ## Usage
 ```javascript
