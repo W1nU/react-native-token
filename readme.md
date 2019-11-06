@@ -25,7 +25,7 @@ const example = async () => {
     // Get all tokens that stored in Topic
     tokens = await topic.getAllToken()
     
-    let publicToken = tokens.publicKey.tokenValue
+    let publicKey = tokens.publicKey.tokenValue
 }
 
 // IMPORTANT : EXAMPLE FUNCTION
