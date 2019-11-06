@@ -15,36 +15,38 @@ import { useTopic } from "react-native-token"
 // this is not required
 import API from "aws-amplify"
 
-// IMPORTANT : EXAMPLE FUNCTION
-const validateSessionToken = async (token) => {
-    const result = await API.get("rntoken", "/token", {
-        body: "validate",
-        type: "publicKey"
-        token: token
-    })
-
-    return result // false or true
-}
-
 const example = async () => {
     // Create a topic for storing Keys, Tokens ... etc.
     let topic = await useTopic("rsa")
 
     // Set a value
-    await topic.setToken("publicKey", publicKey)
+    await topic.setToken("publicKey", publicKey, validateSessionToken)
 
     // Get all tokens that stored in Topic
     tokens = await topic.getAllToken()
     
     let publicToken = tokens.publicKey.tokenValue
 }
+
+// IMPORTANT : EXAMPLE FUNCTION
+const validateSessionToken = async (token) => {
+    const result = await API.get("rntoken", "/tokenValidate", {
+        body: {
+            type: "publicKey",
+            token: token
+        }
+    })
+
+    return result // false or true
+}
+
 ```
 
 ## API
 ### functions
 #### useTopic(topicTitle(String, required)) => RNToken objcet
 * Create A topic for storing values.
-* It only create a new topic when topic does not exist.
+* It only creates a new topic when topic does not exist.
 * If already had a topic for 'topicTitle' that you passed, will just return RNToken object
 
 ##### usage 
