@@ -7,6 +7,9 @@ Library for managing tokens structured with keychain storage
 * Token stored in Keychain storage
 * MIT License
 
+## Setup
+```npm i react-native-token || yarn add react-native-token```
+
 ## Usage
 ```javascript
 //import library
