@@ -23,7 +23,7 @@ const example = async () => {
     await topic.setToken("publicKey", publicKey, validateSessionToken)
 
     // Get all tokens that stored in Topic
-    tokens = await topic.getAllToken()
+    let tokens = await topic.getAllToken()
     
     let publicKey = tokens.publicKey.tokenValue
 }
@@ -37,7 +37,7 @@ const validateSessionToken = async (token) => {
         }
     })
 
-    return result // false or true
+    return result
 }
 
 ```
