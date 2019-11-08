@@ -1,6 +1,6 @@
 {
   "name": "react-native-token",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Library for managing tokens structured with keychain storage",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,8 @@
     "keychain",
     "front-end",
     "mobile",
-    "react"
+    "react",
+    "keychain"
   ],
   "author": "W1nU(Seungwoo Jung)",
   "license": "MIT",
