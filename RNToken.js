@@ -30,7 +30,7 @@ class RNToken{
     }
 
     async clear() {
-        await RNTokenFunctions.clear()
+        await RNTokenFunctions.clear(this.topicTitle)
     }
 
     static async _initStorage(topicTitle) {

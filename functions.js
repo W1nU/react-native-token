@@ -166,8 +166,8 @@ const RNTokenFunctions = {
         }
     },
 
-    clear: async () => {
-        await KeychainStorage.removeItem(KEYCHAIN_ROOT_KEY)
+    clear: async (topicTitle) => {
+        await RNTokenFunctions.addTopic(topicTitle)
     },
 
     _checkTopicExist: async (storage, topicTitle) => {
