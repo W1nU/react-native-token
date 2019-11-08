@@ -166,6 +166,9 @@ const RNTokenFunctions = {
         }
     },
 
+    clear: async () => {
+        await KeychainStorage.removeItem(KEYCHAIN_ROOT_KEY)
+    },
 
     _checkTopicExist: async (storage, topicTitle) => {
         if(await Object.keys(storage).includes(topicTitle)){
