@@ -29,6 +29,10 @@ class RNToken{
         return await RNTokenFunctions.validateToken(this.topicTitle, tokenTitle)
     }
 
+    async clear() {
+        await RNTokenFunctions.clear(this.topicTitle)
+    }
+
     static async _initStorage(topicTitle) {
         if(!await RNTokenFunctions._checkTopicExist(topicTitle)){
             await RNTokenFunctions.addTopic(topicTitle)

@@ -27,8 +27,10 @@ const example = async () => {
 
     // Get all tokens that stored in Topic
     let tokens = await topic.getAllToken()
-    
+
     let publicKey = tokens.publicKey.tokenValue
+
+    await topic.clear()
 }
 
 // IMPORTANT : EXAMPLE FUNCTION
@@ -114,6 +116,19 @@ const example = async () => {
     let topic = await useTopic("rsa")
 
     await topic.getAllToken()
+}
+```
+#### RNToken.clear()
+* Clear Topic
+
+##### usage
+```javascript
+import { useTopic } from "react-native-token"
+
+const example = async () => {
+    let topic = await useTopic("rsa")
+
+    await topic.clear()
 }
 ```
 

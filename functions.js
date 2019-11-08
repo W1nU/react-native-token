@@ -166,6 +166,9 @@ const RNTokenFunctions = {
         }
     },
 
+    clear: async (topicTitle) => {
+        await RNTokenFunctions.addTopic(topicTitle)
+    },
 
     _checkTopicExist: async (storage, topicTitle) => {
         if(await Object.keys(storage).includes(topicTitle)){
