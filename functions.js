@@ -102,30 +102,6 @@ const RNTokenFunctions = {
 
         await KeychainStorage.setItem(KEYCHAIN_ROOT_KEY, JSON.stringify(storage))
     },
-    
-    // updateToken: async (topicTitle, tokenTitle, tokenValue, validateFunction) => {
-    //     await RNToken._checkInitializedStorage()
-        
-    //     let storage = await KeychainStorage.getItem(KEYCHAIN_ROOT_KEY)
-    //     storage = await JSON.parse(storage)
-
-    //     if(!RNToken._checkTopicExist(storage, topicTitle)){
-    //         throw Error("Topic is not Exist : " + topicTitle)
-    //     }
-    //     else{
-    //         if(!RNToken._checkTokenExist(storage, topicTitle, tokenTitle)){
-    //             throw Error("Token (" +  tokenTitle + ") is not Exist in Topic (" + topicTitle + ")")
-    //         }
-    //         else {
-    //             storage[topicTitle][tokenTitle] = {
-    //                 tokenValue: tokenValue,
-    //                 validateFunction: validateFunction
-    //             }
-    //         }
-    //     }
-
-    //     await KeychainStorage.setItem(KEYCHAIN_ROOT_KEY, JSON.stringify(storage))
-    // },
 
     validateToken: async (topicTitle, tokenTitle) => {
         await RNTokenFunctions._checkInitializedStorage()
@@ -167,7 +143,19 @@ const RNTokenFunctions = {
     },
 
     clear: async (topicTitle) => {
-        await RNTokenFunctions.addTopic(topicTitle)
+        await RNTokenFunctions._checkInitializedStorage()
+
+        let storage = await KeychainStorage.getItem(KEYCHAIN_ROOT_KEY)
+        storage = await JSON.parse(storage)
+        
+        if(await RNTokenFunctions._checkTopicExist(storage, topicTitle)) {
+            storage[topicTitle] = {}
+
+            await KeychainStorage.setItem(KEYCHAIN_ROOT_KEY, JSON.stringify(storage))
+        }
+        else {
+            throw Error("Topic is not Exist : " + topicTitle)
+        }
     },
 
     _checkTopicExist: async (storage, topicTitle) => {
