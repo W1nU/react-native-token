@@ -46,6 +46,16 @@ const validateSessionToken = async (token) => {
 }
 
 ```
+## Methods
+* useTopic
+* setToken
+* getToken
+* deleteToken
+* getAllToken
+* getAllTokenTitle
+* deleteTopic
+* validateToken
+* clear
 
 ## API
 ### functions
@@ -118,6 +128,21 @@ const example = async () => {
     await topic.getAllToken()
 }
 ```
+
+#### RNToken.getAllTokenTitle()
+* Get all tokenTitle in topic
+
+##### usage 
+```javascript
+import { useTopic } from "react-native-token"
+
+const example = async () => {
+    let topic = await useTopic("rsa")
+
+    await topic.getAllTokenTitle()
+}
+```
+
 #### RNToken.clear()
 * Clear Topic
 

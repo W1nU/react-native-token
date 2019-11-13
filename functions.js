@@ -142,6 +142,12 @@ const RNTokenFunctions = {
         }
     },
 
+    getAllTokenTitle: async (topicTitle) => {
+        let topic = await RNTokenFunctions.getAllToken(topicTitle)
+
+        return await topic.keys()
+    },
+
     clear: async (topicTitle) => {
         await RNTokenFunctions._checkInitializedStorage()
 

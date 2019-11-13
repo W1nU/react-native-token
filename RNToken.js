@@ -21,6 +21,10 @@ class RNToken{
         return await RNTokenFunctions.getAllToken(this.topicTitle)
     }
 
+    async getAllTokenTitle() {
+        return await RNTokenFunctions.getAllTopicTitle(this.topicTitle)
+    }
+
     async deleteTopic() {
         return await RNTokenFunctions.deleteTopic(this.topicTitle)
     }
