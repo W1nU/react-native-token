@@ -35,7 +35,7 @@ const example = async () => {
 
 // IMPORTANT : EXAMPLE FUNCTION
 const validateSessionToken = async (token) => {
-    const result = await API.get("rntoken", "/tokenValidate", {
+    const result = await API.post("rntoken", "/tokenValidate", {
         body: {
             type: "publicKey",
             token: token
