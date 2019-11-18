@@ -145,7 +145,7 @@ const RNTokenFunctions = {
     getAllTokenTitle: async (topicTitle) => {
         let topic = await RNTokenFunctions.getAllToken(topicTitle)
 
-        return await topic.keys()
+        return await Object.keys(topic)
     },
 
     clear: async (topicTitle) => {
